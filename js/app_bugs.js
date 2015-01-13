@@ -18,15 +18,12 @@ $(document).ready(function(){
 });
 
 function newGame() {
+	var userGuessCounter = 0;
+	resetGame();
 	var randomNumber = Math.random();
 		randomNumber *= 100;
 		randomNumber = Math.round(randomNumber);
-	var userGuessCounter = 0;
 	
-	$('#count').html(userGuessCounter);
-	$('#userGuess').val('');
-	$('#guessList').html('');
-
 	$('#guessButton').click(checkYourGuess);
 
 	function checkYourGuess(){
@@ -41,11 +38,8 @@ function newGame() {
   		
   		if (userGuess == randomNumber) {
   			alert("You got it!");
-  			$('#userGuess').val('');
-			$('#guessList').html('');
-			newGame();
+			resetGame();
   		} else {
-  		// if (userGuess != randomNumber) {
 			if (Math.abs(randomNumber - userGuess) <= 10) {
 				alert("You're hot");
 			} else if (Math.abs(randomNumber - userGuess) <= 20) {
@@ -55,6 +49,13 @@ function newGame() {
 			}
 		};
 	};	
+
+	function resetGame() {
+		$('#count').html(userGuessCounter);
+		$('#userGuess').val('');
+		$('#guessList').html('');
+	};
 };
+
 
 
