@@ -27,7 +27,13 @@ function newGame() {
 	$('#userGuess').val('');
 	$('#guessList').html('');
 
-	$('#guessButton').click(checkYourGuess);
+	$('#guessButton').click(function(){
+		if ($('#userGuess').val() = NaN) {
+			alert('Please enter a valid number');
+		} else {
+			checkYourGuess();
+		}
+	});
 
 	function checkYourGuess(){
 		var userGuess = $('#userGuess').val();
