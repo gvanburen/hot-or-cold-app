@@ -28,7 +28,8 @@ function newGame() {
 	$('#guessList').html('');
 
 	$('#guessButton').click(function(){
-		if ($('#userGuess').val() = NaN) {
+		var newGuess = $('#userGuess').val();
+		if (isNaN(newGuess)) {
 			alert('Please enter a valid number');
 		} else {
 			checkYourGuess();
