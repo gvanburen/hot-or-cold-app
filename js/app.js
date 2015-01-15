@@ -5,10 +5,12 @@ $(document).ready(function(){
 	console.log(randomNumber);
 	var userGuessCounter = 0
 
-	$('#guessButton').click(function(){
+	$('#guessButton').click(function(event){
+		event.preventDefault();
 		var userGuess = $('#userGuess').val();
-		if (isNaN(userGuess)) {
+		if (isNaN(userGuess) || userGuess >= 100) {
 			alert('Please enter a valid number');
+			$('#userGuess').val('');
 		} else {
 			guessCounter();
 			letsPlay();
@@ -36,13 +38,15 @@ $(document).ready(function(){
  		} else if (Math.abs(randomNumber - userGuess) <= 30) {
  			feedback("You're cold");
  		} else {
- 			feedback("You're freezing!")
+ 			feedback("You're freezing!");
  		}
+
+ 		$('#userGuess').val('');
  	};
 
 	$('.new').click(function(){
-		letsPlay();
-	})
+		location.reload(true);
+	});
 
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
